@@ -1,0 +1,2 @@
+# need region even when configuring global resources
+aws_region: us-west-2

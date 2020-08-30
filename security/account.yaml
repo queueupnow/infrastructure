@@ -1,0 +1,3 @@
+terraform_state_bucket: voter-place-security-terraform-state
+terraform_state_region: us-west-2
+aws_account_id: 593971421826
