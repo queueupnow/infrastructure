@@ -20,26 +20,26 @@ assume roles in the various accounts.
 My .aws/config file looks like this:
 
 ```
-[profile voter]
+[profile q-security]
 mfa_serial=arn:aws:iam::593971421826:mfa/sgendler
 
-[profile voter-root]
-source_profile=voter-security
+[profile q-root]
+source_profile=q-security
 role_arn=arn:aws:iam::431823461389:role/cross_account_billing_access
 mfa_serial=arn:aws:iam::593971421826:mfa/sgendler
 
-[profile voter-dev]
-source_profile=voter-security
+[profile q-dev]
+source_profile=q-security
 role_arn=arn:aws:iam::507625003920:role/cross_account_full_access
 mfa_serial=arn:aws:iam::593971421826:mfa/sgendler
 
-[profile voter-stage]
-source_profile=voter-security
+[profile q-stage]
+source_profile=q-security
 role_arn=arn:aws:iam::178696548878:role/cross_account_full_access
 mfa_serial=arn:aws:iam::593971421826:mfa/sgendler
 
-[profile voter-prod]
-source_profile=voter-security
+[profile q-prod]
+source_profile=q-security
 role_arn=arn:aws:iam::062394816843:role/cross_account_full_access
 mfa_serial=arn:aws:iam::593971421826:mfa/sgendler
 ```
@@ -51,11 +51,11 @@ assigned to a group you are a memmber of.
 I run terraform by using aws-vault, which knows about my access key for the 
 IAM user.
 
-`aws-vault exec voter-prod terragrunt apply` (which runs terragrunt against the prod account with your prod role)
+`aws-vault exec q-prod terragrunt apply` (which runs terragrunt against the prod account with your prod role)
 
 You can access the console via:
 
-`aws-vault login voter-dev` (which will log in to the dev account with your dev
+`aws-vault login q-dev` (which will log in to the dev account with your dev
 role)
 
 Note that the root account has no infrastructure, so the role name is
