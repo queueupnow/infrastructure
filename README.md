@@ -40,13 +40,13 @@ mfa_serial=arn:aws:iam::593971421826:mfa/sgendler
 
 [profile q-prod]
 source_profile=q-security
-role_arn=arn:aws:iam::062394816843:role/cross_account_full_access
+role_arn=arn:aws:iam::062394816843:role/cross_account_read_only_access
 mfa_serial=arn:aws:iam::593971421826:mfa/sgendler
 ```
 
 Note that the mfa_serial is always the mfa from my security iam user, but the
 role is the role in the other account.  Permission to assume that role is
-assigned to a group you are a memmber of.
+assigned to a group you are a member of.
 
 I run terraform by using aws-vault, which knows about my access key for the 
 IAM user.
@@ -64,10 +64,10 @@ Note that the root account has no infrastructure, so the role name is
 All accounts except root and security have 4 cross-account roles
 Security IAM has 4 groups (full_access, dev_access, billing_access,
 and read_only_access) for each of dev, stage, and prod accounts, as well as 1
-billing group for root account and 1 self_mgmt group in security.
+billing group and full access group for root account and 1 self_mgmt group in security.
 
-Administrative users have full access in each environment, as well as self-mgmt
-and billing access. Regular devs would just have dev_access in environments
+Administrative users have full access in each environment, as well as self-mgmt.
+Regular devs would just have dev_access in environments
 (read_only in prod) and self-mgmt.
 
 The dev role grants full access to common aws services for developers instead of
