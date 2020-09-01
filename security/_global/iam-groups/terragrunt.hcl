@@ -1,5 +1,5 @@
 terraform {
-  source = "../../..//templates/security/iam-groups"
+  source = "git@github.com:queueupnow/infrastructure-templates.git//security/iam-groups?ref=v0.0.2"
 }
 
 include {
