@@ -1,5 +1,5 @@
 terraform {
-  source = "../../../..//templates/kafka"
+  source = "git@github.com:queueupnow/infrastructure-templates.git//kafka?ref=v0.0.2"
 }
 
 include {

@@ -1,5 +1,5 @@
 terraform {
-  source = "../../../..//templates/network/vpc"
+  source = "git@github.com:queueupnow/infrastructure-templates.git//network/vpc?ref=v0.0.2"
 }
 
 include {
